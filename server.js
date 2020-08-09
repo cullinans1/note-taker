@@ -1,15 +1,6 @@
-// const { animals } = require('./data/animals');
-// const express = require('express');
-// const PORT = process.env.PORT || 3001;
-// const fs = require('fs');
-// const path = require('path');
-// const apiRoutes = require('./routes/apiRoutes');
-// const htmlRoutes = require('./routes/htmlRoutes');
-const { notes } = require('./Develop/db/db.json');
 const express = require('express');
 const PORT = process.env.PORT || 3001;
-const fs = require('fs');
-const path = require('path');
+
 const apiRoutes = require('./routes/apiRoutes');
 const htmlRoutes = require('./routes/htmlRoutes');
 
@@ -22,11 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 //used to link files like css and js
 app.use(express.static('public'));
-app.use('/api', apiRoutes);
-app.use('/', htmlRoutes);
 
 
 //root route
-app.listen(PORT, () => {
-    console.log(`API server now on port ${PORT}!`);
-});
+app.listen(PORT, () => console.log(`API server now on port ${PORT}!`));
