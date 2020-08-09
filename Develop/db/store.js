@@ -13,7 +13,7 @@ class Store {
     write(note) {
         return writeFileAsync('db/db.json', JSON.stringify(note));
     }
-    getNototes() {
+    getNotes() {
         return this.read().then(notes => {
             let parsedNotes;
 
@@ -33,6 +33,13 @@ class Store {
         if(!title || ! text) {
             throw new Error('Note title and text cannot be blank')
         }
+
+        const newNote = { title, text, id: uuid() };
+
+        return this.getNotes()
+        .then(notes => [...notes, newNote])
+        .then(updateNotes => this.write(updateNotes))
+        .then(() => newNote);
     }
 
 }
