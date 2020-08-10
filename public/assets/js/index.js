@@ -10,7 +10,7 @@ var activeNote = {};
 // A function for getting all notes from the db
 var getNotes = function() {
   return $.ajax({
-    url: "/api/notes",
+    url: "https://radiant-coast-49049.herokuapp.com/api/notes",
     method: "GET"
   });
 };
@@ -18,7 +18,7 @@ var getNotes = function() {
 // A function for saving a note to the db
 var saveNote = function(note) {
   return $.ajax({
-    url: "/api/notes",
+    url: "https://radiant-coast-49049.herokuapp.com/api/notes",
     data: note,
     method: "POST"
   });
