@@ -41,5 +41,12 @@ class Store {
         .then(updateNotes => this.write(updateNotes))
         .then(() => newNote);
     }
-
+    removeNote(id) {
+        // Get all notes, remove the note with the given id, write the filtered notes
+        return this.getNotes()
+          .then(notes => notes.filter(note => note.id !== id))
+          .then(filteredNotes => this.write(filteredNotes));
+      }
 }
+
+module.exports = new Store();
